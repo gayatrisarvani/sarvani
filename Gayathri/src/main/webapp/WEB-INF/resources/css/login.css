@@ -1,0 +1,10 @@
+body{
+	background-image:url(imagePATH//Gayathri/src/main/webapp/WEB-INF/resources/images/m9.jpg);
+	-moz-background-size:cover;
+	-webkit-background-size:cover;
+	background-size:cover;
+	background-position:top center !important;
+	background-repeat:no-repeat !important;
+	background-attachment:fixed;
+	
+}
