@@ -1,6 +1,10 @@
 package com.gayathri.model;
 
-public class UserOrder {
+import java.io.Serializable;
+
+public class UserOrder implements Serializable {
+	
+	private static final long serialVersionUID = 1L;
 	private int OrderId;
 	private Customer customer;
 	private Cart cart;
