@@ -42,13 +42,13 @@ public class HomeController {
 		return new ModelAndView("home");
 	}
 	//This SignUp and a href SignIn name in SignUp.jsp file should match
-	@RequestMapping("/SignUp")
+	/*@RequestMapping("/SignUp")
 	public ModelAndView SignUppage()
 	{
 		Customer customer= new Customer();
 		System.out.println("SignUp method called");
 		return new ModelAndView("SignUp","customerObj",customer);//this SignUp and views SignUp.jsp file name should match.customerObj is a key value which goes to the controller and it takes or gets all the values of customer and then goes to views 
-	}
+	}*/
 	@RequestMapping("/login")
 	public String loginMethod()
 	{
@@ -89,7 +89,7 @@ public class HomeController {
 		System.out.println("UserName:"+principal.getName());
 		return new ModelAndView("adminHome");
 	}
-	@RequestMapping("/register")//action name given SignUp.jsp and request mapping must be same
+	/*@RequestMapping("/register")//action name given SignUp.jsp and request mapping must be same
 	public String register(@Valid@ModelAttribute("customerObj")Customer customer,BindingResult bindingResult)//model attribute captures the values from customerObj
 	{
 		System.out.println("I am in register page");
@@ -105,7 +105,7 @@ public class HomeController {
 	service.addCustomer(customer);
 	return "redirect:/login";
 	
-    }
+    }*/
 	@RequestMapping("/about")
 	public ModelAndView Aboutuspage()
 	{

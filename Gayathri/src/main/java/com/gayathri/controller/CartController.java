@@ -1,5 +1,11 @@
 package com.gayathri.controller;
 
+import java.io.IOException;
+import java.util.List;
+
+import org.codehaus.jackson.JsonGenerationException;
+import org.codehaus.jackson.map.JsonMappingException;
+import org.codehaus.jackson.map.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
@@ -37,8 +43,22 @@ public class CartController {
 		cartItem.setItem(item);
 		cartItem.setQuantity(1);
 		cartItem.setTotalPrice(item.getPrice());
+		cartItem.setImage_id(item.getItemId());
 		cartItemService.addCartItem(cartItem);
 		return "redirect:/CustomerCheck";
+	}
+	@RequestMapping("/mycart")
+	public ModelAndView disCart() throws JsonGenerationException, JsonMappingException, IOException
+	{
+		String activeUserName = SecurityContextHolder.getContext().getAuthentication().getName();
+		Customer activeUser = customerService.getCustomerByName(activeUserName);
+		Cart cart=activeUser.getCart();
+		int cartId = cart.getCartId();
+		List<CartItem> list = cartItemService.ViewCartItems(cartId);
+		ObjectMapper mapper = new ObjectMapper();
+		String listJSON = mapper.writeValueAsString(list);
+		System.out.println(listJSON);
+		return new ModelAndView("viewcart","CartItemsListKey",listJSON);
 	}
 
 }

@@ -39,6 +39,7 @@
 <li><a href="contact">ContactUs</a></li>
 
 		  <ul class="nav navbar-nav navbar-right">
+		  <li><a href="mycart">Viewcart</a>
 		 <li><a href="logout"><span class="glyphicon glyphicon-log-in"></span>Logout</a></li>
 		    </ul>
 		   

@@ -2,6 +2,8 @@ package com.gayathri.dao;
 
 import java.util.List;
 
+import javax.xml.ws.handler.MessageContext;
+
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
@@ -16,9 +18,26 @@ import com.gayathri.model.UserRole;
 public class CustomerDaoImpl implements CustomerDao {
 	@Autowired
 	SessionFactory sessionFactory;
+	public Customer initFlow()
+	{
+		return new Customer();
+	}
 	//saving the customer
-	public void addCustomer(Customer customer) {
-		System.out.println("CustomerDaoImpl");
+	public String addCustomer(Customer customer) {
+		String status="success";
+		if(customer.getUsername().isEmpty())
+		{
+			
+			return "failure";
+		}
+		if(customer.getPassword().isEmpty())
+		{
+			return "failure";
+		}
+		if(customer.getEmailId().isEmpty())
+		{
+			return "failure";
+		}
 		Session session=sessionFactory.getCurrentSession();
 		Transaction transaction=session.beginTransaction();
 		Cart cart=new Cart();
@@ -29,12 +48,12 @@ public class CustomerDaoImpl implements CustomerDao {
 		userRole.setAuthority("ROLE_USER");
 		userRole.setUserId(customer.getCustomerId());
 		session.save(userRole);
-		
 		transaction.commit();
-		System.out.println("Done saving the customer");	
+		System.out.println("Done saving the customer");
+		return null;	
 	}
 	@Override
-	@SuppressWarnings("unchecked")
+	@SuppressWarnings({ "unchecked", "unused" })
 	public List<Customer> viewCustomer() {
 		Session session= sessionFactory.getCurrentSession();
 		Transaction transaction= session.beginTransaction();

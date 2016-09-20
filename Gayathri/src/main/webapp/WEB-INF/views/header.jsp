@@ -54,7 +54,7 @@ color: #00FFFF;
 		</div>
 		<div class="collapse navbar-collapse" id="navbar">
 			<ul class="nav navbar-nav">
-				<li class="active"><a href="home">Home</a></li>
+				<li class="active"><a href="${flowExecutionUrl}&_eventId_home">Home</a></li>
 				<li class="dropdown">
 				<a class="dropdown-toggle" data-toggle="dropdown" href="#">Collections <span class="caret"></span></a>
 					<ul class="dropdown-menu">

@@ -2,6 +2,8 @@ package com.gayathri.model;
 
 
 
+import java.io.Serializable;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -9,23 +11,26 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 
+import org.codehaus.jackson.annotate.JsonIgnore;
 import org.hibernate.validator.constraints.NotEmpty;
 
 
 @Entity
-public class Customer {
+public class Customer implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 7513732499715308825L;
 	@Id
 	@GeneratedValue
 	private int customerId;
-	@NotEmpty(message="username should not be empty")
 	private String username;
-	@NotEmpty(message="password should not be empty")
 	private String password;
-	@NotEmpty(message="emailId should not be empty") 
 	private String emailId;
 	private boolean enabled;
 	@OneToOne(cascade=CascadeType.ALL)
 	@JoinColumn(name="cartId")
+	@JsonIgnore
 	private Cart cart;
 	
 	public Cart getCart() {

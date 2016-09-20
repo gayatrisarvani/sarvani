@@ -8,7 +8,7 @@
 <center><img src="resources/images/rg.jpg" style="width: 400px"; height="200px"></center>  
 <br> 
 <div align="center" class="form">			
-<form:form action="register" commandName="customerObj" method="POST">
+<form:form  commandName="customer" >
 <table>
 <tr>
 <td>UserName:</td><td><form:input path="username"></form:input><form:errors path="username" style="color:red"></form:errors></td>
@@ -23,7 +23,7 @@
 </tr>
 <tr><td><br></td></tr>
 <tr><td></td>
-<td><input type="submit" value="Register"/></td>
+<td><input name="_eventId_submit" type="submit" value="Register"/></td>
 </tr>
 </table>
 </form:form>
